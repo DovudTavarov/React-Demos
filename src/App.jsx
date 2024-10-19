@@ -5,6 +5,10 @@ import { Toggle } from "./components/Toggle";
 import { PassMessage } from "./components/PassMessage";
 import { DisplayUsers } from "./components/DisplayUsers";
 import { TwoWayBinding } from "./components/TwoWayBinding";
+import { Counter } from "./components/Counter";
+import { VotingSystem } from "./components/VotingSystem";
+import { TipCalculator } from "./components/TipCalculator";
+import { BasicTodoList } from "./components/BasicTodoList";
 const userName = ["John Doe", "Jane Doe", "Billy Doe"];
 
 const App = () => {
@@ -13,6 +17,12 @@ const App = () => {
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState("");
   const [value, setValue] = useState("");
+  const [counter, setCaunter] = useState(0);
+  const [barcelonaVotes, setBarcelonaVotes] = useState(0);
+  const [juventusVotes, setJuventusVotes] = useState(0);
+  const [manUnitedVotes, setManUnitedVotes] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [todos, setNewTodos] = useState({});
 
   const switchingLight = () => {
     setLightStatus(!lightStatus);
@@ -36,6 +46,48 @@ const App = () => {
   };
   const valueBinding = (event) => {
     setValue(event.target.value);
+  };
+
+  const counterIncrease = () => {
+    setCaunter(counter + 1);
+  };
+  const counterDecrease = () => {
+    setCaunter(counter - 1);
+  };
+  const counterReset = () => {
+    setCaunter(counter * 0);
+  };
+  const increaseBarcelonaVotes = () => setBarcelonaVotes(barcelonaVotes + 1);
+  const increaseJuventusVotes = () => setJuventusVotes(juventusVotes + 1);
+  const increaseManUnitedVotes = () => setManUnitedVotes(manUnitedVotes + 1);
+
+  const totalTip = () => {
+    const bill = Number(document.getElementById("amount").value);
+    const tip = Number(document.getElementById("tip").value);
+    const people = Number(document.getElementById("people").value);
+    const newTotal = (bill * tip) / people;
+    setTotal(newTotal.toFixed(2));
+  };
+
+  const addNewTodo = () => {
+    const inputElem = document.getElementById("todo-text");
+    const newValue = inputElem.value.trim();
+    const newTodos = { ...todos };
+    if (newValue.length > 0) {
+      const newTodo = {
+        text: newValue,
+      };
+      const newId = Math.random().toString(16).slice(2);
+
+      newTodos[newId] = newTodo;
+
+      setNewTodos(newTodos);
+    }
+
+    inputElem.value = "";
+  };
+  const clearTodos = () => {
+    setNewTodos({});
   };
 
   return (
@@ -66,6 +118,34 @@ const App = () => {
       </div>
       <div className="cont">
         <TwoWayBinding value={value} onChange={valueBinding} />
+      </div>
+      <div className="cont">
+        <Counter
+          counter={counter}
+          counterDecrease={counterDecrease}
+          counterIncrease={counterIncrease}
+          counterReset={counterReset}
+        />
+      </div>
+      <div className="cont">
+        <VotingSystem
+          increaseBarcelonaVotes={increaseBarcelonaVotes}
+          increaseJuventusVotes={increaseJuventusVotes}
+          increaseManUnitedVotes={increaseManUnitedVotes}
+          barcelonaVotes={barcelonaVotes}
+          juventusVotes={juventusVotes}
+          manUnitedVotes={manUnitedVotes}
+        />
+      </div>
+      <div className="cont">
+        <TipCalculator totalTip={totalTip} total={total} />
+      </div>
+      <div className="cont">
+        <BasicTodoList
+          clearTodos={clearTodos}
+          addNewTodo={addNewTodo}
+          todos={todos}
+        />
       </div>
     </>
   );

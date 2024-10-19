@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .cont {
   width: 100%;
   height: 100vh;
@@ -5,4 +8,126 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.voting-cont {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: lightblue;
+}
+.voting-box {
+  padding-top: 20px;
+  width: 300px;
+  height: 360px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+}
+#voting-btn {
+  padding: 10px 50px;
+  background-color: green;
+  border: none;
+  color: white;
+}
+#voting-btn2 {
+  padding: 10px 50px;
+  background-color: green;
+  border: none;
+  color: white;
+}
+#voting-btn3 {
+  padding: 10px 50px;
+  background-color: green;
+  border: none;
+  color: white;
+}
+.tip-cont {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to right, black, red);
+}
+.tip-box {
+  background-color: white;
+  width: 350px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 15px;
+  border: 1px solid black;
+}
+.head {
+  text-align: center;
+  background-color: rgb(64, 0, 0);
+  color: white;
+  width: 350px;
+}
+#tip-btn {
+  margin-top: 10px;
+  padding: 15px 30px;
+  background-color: rgb(161, 2, 2);
+  color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+#amount,
+#people {
+  height: 30px;
+  width: 200px;
+  font-size: 15px;
+}
+#totalTip {
+  font-size: 20px;
+}
+.todo-cont {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(208, 224, 230);
+}
+.todo-box {
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  border: 1px grey solid;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 2px grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flex-form {
+  display: flex;
+  margin-bottom: 20px;
+}
+#todo-text {
+  background-color: rgb(208, 224, 230);
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+#todo-submit {
+  background-color: lightblue;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+#todo-clear {
+  color: lightcoral;
+  cursor: pointer;
 }
